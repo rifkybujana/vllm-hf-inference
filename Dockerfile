@@ -57,7 +57,7 @@ COPY --from=build /workspace/vllm/*.so /workspace/vllm/
 COPY vllm vllm
 
 EXPOSE 8000
-ENTRYPOINT ["python3", "-m", "vllm.entrypoints.api_server"]
+ENTRYPOINT ["python3", "-m", "vllm.entrypoints.api_server", "--model", "/repository", "--trust-remote-code", "--quantization", "awq"]
 
 # openai api server alternative
 FROM vllm-base AS vllm-openai
